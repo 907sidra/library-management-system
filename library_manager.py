@@ -146,7 +146,7 @@ def add_book(title, author, genre, read_status):
    #remove books from library
 def remove_book(index):
     if 0 <= index < len(st.session_state.library):
-       del st.session_state.library(index)
+       del st.session_state.library[index]
         save_library_data()
         st.session_state.book_removed = True
         return True
