@@ -342,14 +342,14 @@ elif st.session_state.current_view == "library":
                         st.session_state.library[i]['read_status'] = new_status
                         save_library_data()
                         st.rerun()
-    if st.session_state.book_removed:
+  if st.session_state.get("book_removed", False):
         st.markdown("<div class='success-message'>Book removed successfully!</div>", unsafe_allow_html=True)
         st.session_state.book_removed = False
-elif st.session_state.cuurent_view == "search_books":   
-    st.markdown("<h2 class='sub-header'>Search Books 🔍</h2>", unsafe_allow_html=True)
-    #search books input form
-    search_by = st.selectbox("Search by", options=["title", "author", "genre"])
-    search_term = st.text_input("Enter search term:")
+    if st.session_state.current_view == "search_books":   
+        st.markdown("<h2 class='sub-header'>Search Books 🔍</h2>", unsafe_allow_html=True)
+        #search books input form
+        search_by = st.selectbox("Search by", options=["title", "author", "genre"])
+        search_term = st.text_input("Enter search term:")
 
     if st.button("Search", use_container_width=False):
         if search_term:
